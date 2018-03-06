@@ -4,6 +4,19 @@ Terraform Module to provision S3 storage for Gravitational's Teleport
 
 * https://gravitational.com/teleport
 
+Using S3 for session storage in Teleport has many advantages:
+
+* Encryption at rest
+* Versioned objects
+* Lifecycle Support to expunge old sessions (e.g. after 2 years)
+* Extreme Availability & Durability
+* Zero Maintenance
+* Glacier
+* Cross Region Replication
+* S3 Bucket could be owned by tamper-proof AWS Audit Account
+* Easily prevent deletions
+* Audit Trails, Access Logs via Cloud Trails
+
 
 ## Help
 
