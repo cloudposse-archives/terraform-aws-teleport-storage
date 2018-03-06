@@ -4,6 +4,7 @@ Terraform Module to provision an S3 bucket for session logs and a DynamoDB table
 
 * https://gravitational.com/teleport
 
+Using DynamoDB as a storage backend allows highly available deployments.
 
 Using S3 for session storage in Teleport has many advantages:
 
