@@ -59,7 +59,12 @@ See [LICENSE](LICENSE) for full details.
 
 ## About
 
-`terraform-aws-teleport-storage` is maintained and funded by [Cloud Posse, LLC][website]. Like it? Please let us know at <hello@cloudposse.com>
+`terraform-aws-teleport-storage` is maintained and funded by [Cloud Posse, LLC][website].
+
+![Cloud Posse](https://cloudposse.com/logo-300x69.png)
+
+
+Like it? Please let us know at <hello@cloudposse.com>
 
 We love [Open Source Software](https://github.com/cloudposse/)!
 
