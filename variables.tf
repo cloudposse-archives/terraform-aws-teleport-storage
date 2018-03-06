@@ -29,33 +29,60 @@ variable "delimiter" {
   default = "-"
 }
 
-variable "sessions_prefix" {
+variable "prefix" {
   default = ""
 }
 
-variable "logs_prefix" {
-  default = ""
-}
-
-variable "logs_standard_transition_days" {
+variable "standard_transition_days" {
   description = "Number of days to persist in the standard storage tier before moving to the glacier tier"
   default     = "30"
 }
 
-variable "logs_glacier_transition_days" {
+variable "glacier_transition_days" {
   description = "Number of days after which to move the data to the glacier storage tier"
   default     = "60"
 }
 
-variable "logs_expiration_days" {
+variable "expiration_days" {
   description = "Number of days after which to expunge the objects"
   default     = "90"
 }
 
-variable "noncurrent_version_transition_days" {
-  default = "30"
+variable "hash_key" {
+  type    = "string"
+  default = "HashKey"
 }
 
-variable "noncurrent_version_expiration_days" {
-  default = "90"
+variable "range_key" {
+  type    = "string"
+  default = "FullPath"
+}
+
+variable "ttl_attribute" {
+  type    = "string"
+  default = "Expires"
+}
+
+variable "autoscale_write_target" {
+  default = 50
+}
+
+variable "autoscale_read_target" {
+  default = 50
+}
+
+variable "autoscale_min_read_capacity" {
+  default = 10
+}
+
+variable "autoscale_max_read_capacity" {
+  default = 100
+}
+
+variable "autoscale_min_write_capacity" {
+  default = 10
+}
+
+variable "autoscale_max_write_capacity" {
+  default = 100
 }

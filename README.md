@@ -1,8 +1,9 @@
 # terraform-aws-teleport-storage [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-teleport-storage.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-teleport-storage)
 
-Terraform Module to provision S3 storage for Gravitational's Teleport
+Terraform Module to provision an S3 bucket for session logs and a DynamoDB table as backend storage for Gravitational's Teleport
 
 * https://gravitational.com/teleport
+
 
 Using S3 for session storage in Teleport has many advantages:
 

@@ -1,7 +1,19 @@
-output "sessions_bucket_name" {
-  value = "${aws_s3_bucket.sessions.id}"
+output "s3_bucket_id" {
+  value = "${module.s3_bucket.id}"
 }
 
-output "sessions_bucket_domain_name" {
-  value = "${aws_s3_bucket.sessions.bucket_domain_name}"
+output "s3_bucket_domain_name" {
+  value = "${module.s3_bucket.bucket_domain_name}"
+}
+
+output "s3_bucket_arn" {
+  value = "${module.s3_bucket.bucket_arn}"
+}
+
+output "dynamodb_table_id" {
+  value = "${module.dynamodb_table.table_id}"
+}
+
+output "dynamodb_table_arn" {
+  value = "${module.dynamodb_table.table_arn}"
 }
