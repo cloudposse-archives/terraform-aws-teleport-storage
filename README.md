@@ -1,10 +1,18 @@
 # terraform-aws-teleport-storage [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-teleport-storage.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-teleport-storage)
 
+## Introduction
+
 This Terraform module provisions:
 
 * An S3 bucket for session logs in Gravitational [Teleport](https://gravitational.com/teleport)
 * An IAM policy with permissions to create and access a DynamoDB table to use as storage backend in Teleport
 
+__NOTE:__ Teleport creates a DynamoDB table with the specified name automatically
+
+https://gravitational.com/teleport/docs/admin-guide/
+
+
+## Features
 
 Using DynamoDB as a storage backend allows highly available deployments of Teleport Auth services.
 
