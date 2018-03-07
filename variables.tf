@@ -26,7 +26,8 @@ variable "delimiter" {
 }
 
 variable "prefix" {
-  default = ""
+  description = "S3 bucket prefix"
+  default     = ""
 }
 
 variable "standard_transition_days" {
