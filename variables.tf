@@ -44,8 +44,3 @@ variable "expiration_days" {
   description = "Number of days after which to expunge the objects"
   default     = "90"
 }
-
-variable "dynamodb_table_name" {
-  type        = "string"
-  description = "DynamoDB table name"
-}
