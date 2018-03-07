@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "dynamodb" {
     effect  = "Allow"
     actions = ["dynamodb:*"]
 
-    resources = ["arn:aws:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${var.dynamodb_table_name}"]
+    resources = ["arn:aws:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${module.label_dynamodb.id}"]
   }
 }
 
