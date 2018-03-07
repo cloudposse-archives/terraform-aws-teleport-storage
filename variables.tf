@@ -1,7 +1,3 @@
-variable "region" {
-  type = "string"
-}
-
 variable "name" {
   type = "string"
 }
@@ -30,7 +26,8 @@ variable "delimiter" {
 }
 
 variable "prefix" {
-  default = ""
+  description = "S3 bucket prefix"
+  default     = ""
 }
 
 variable "standard_transition_days" {
@@ -48,41 +45,7 @@ variable "expiration_days" {
   default     = "90"
 }
 
-variable "hash_key" {
-  type    = "string"
-  default = "HashKey"
-}
-
-variable "range_key" {
-  type    = "string"
-  default = "FullPath"
-}
-
-variable "ttl_attribute" {
-  type    = "string"
-  default = "Expires"
-}
-
-variable "autoscale_write_target" {
-  default = 50
-}
-
-variable "autoscale_read_target" {
-  default = 50
-}
-
-variable "autoscale_min_read_capacity" {
-  default = 10
-}
-
-variable "autoscale_max_read_capacity" {
-  default = 100
-}
-
-variable "autoscale_min_write_capacity" {
-  default = 10
-}
-
-variable "autoscale_max_write_capacity" {
-  default = 100
+variable "dynamodb_table_name" {
+  type        = "string"
+  description = "DynamoDB table name"
 }
