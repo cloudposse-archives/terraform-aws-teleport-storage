@@ -10,6 +10,10 @@ output "s3_bucket_arn" {
   value = "${module.s3_bucket.bucket_arn}"
 }
 
-output "dynamodb_table_name" {
-  value = "${module.label_dynamodb.id}"
+output "dynamodb_table_id" {
+  value = "${module.dynamodb_table.table_id}"
+}
+
+output "dynamodb_table_arn" {
+  value = "${module.dynamodb_table.table_arn}"
 }
