@@ -1,3 +1,23 @@
+module "dynamodb_table" {
+  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.1.0"
+  namespace                    = "${var.namespace}"
+  stage                        = "${var.stage}"
+  name                         = "${var.name}"
+  delimiter                    = "${var.delimiter}"
+  attributes                   = ["${compact(concat(var.attributes, list("dynamodb")))}"]
+  tags                         = "${var.tags}"
+  region                       = "${var.region}"
+  hash_key                     = "${var.hash_key}"
+  range_key                    = "${var.range_key}"
+  ttl_attribute                = "${var.ttl_attribute}"
+  autoscale_read_target        = "${var.autoscale_read_target}"
+  autoscale_write_target       = "${var.autoscale_write_target}"
+  autoscale_min_read_capacity  = "${var.autoscale_min_read_capacity}"
+  autoscale_max_read_capacity  = "${var.autoscale_max_read_capacity}"
+  autoscale_min_write_capacity = "${var.autoscale_min_write_capacity}"
+  autoscale_max_write_capacity = "${var.autoscale_max_write_capacity}"
+}
+
 module "label_dynamodb" {
   source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.3"
   namespace  = "${var.namespace}"
@@ -13,7 +33,7 @@ data "aws_iam_policy_document" "dynamodb" {
     effect  = "Allow"
     actions = ["dynamodb:*"]
 
-    resources = ["arn:aws:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${module.label_dynamodb.id}"]
+    resources = ["${module.dynamodb_table.table_arn}"]
   }
 }
 
