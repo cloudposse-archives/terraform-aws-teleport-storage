@@ -5,7 +5,7 @@
 This Terraform module provisions:
 
 * An S3 bucket for session logs in Gravitational [Teleport](https://gravitational.com/teleport)
-* A DynamoDB table to use as storage backend in Teleport
+* 2 DynamoDB tables to use as storage backend in Teleport
 
 
 ## Features

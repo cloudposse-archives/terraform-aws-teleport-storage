@@ -1,20 +1,82 @@
-module "dynamodb_table" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.1.0"
-  namespace                    = "${var.namespace}"
-  stage                        = "${var.stage}"
-  name                         = "${var.name}"
-  delimiter                    = "${var.delimiter}"
-  attributes                   = ["${compact(concat(var.attributes, list("dynamodb")))}"]
-  tags                         = "${var.tags}"
-  region                       = "${var.region}"
-  hash_key                     = "${var.hash_key}"
-  range_key                    = "${var.range_key}"
-  ttl_attribute                = "${var.ttl_attribute}"
+# From https://github.com/gravitational/teleport/blob/b9813e3/examples/aws/terraform/dynamo.tf#L1-L36
+module "dynamodb_state_table" {
+  source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.7.0"
+  namespace         = "${var.namespace}"
+  stage             = "${var.stage}"
+  name              = "${var.name}"
+  delimiter         = "${var.delimiter}"
+  attributes        = ["${compact(concat(var.attributes, list("cluster_state")))}"]
+  tags              = "${var.tags}"
+  enable_encryption = "true"
+  hash_key          = "HashKey"
+  hash_key_type     = "S"
+  range_key         = "FullPath"
+  range_key_type    = "S"
+  ttl_attribute     = "Expires"
+
+  # min_read and min_write set the provisioned capacity even if the autoscaler is not enabled
+  autoscale_min_read_capacity  = "${var.autoscale_min_read_capacity}"
+  autoscale_min_write_capacity = "${var.autoscale_min_write_capacity}"
+
+  enable_autoscaler            = "true"
   autoscale_read_target        = "${var.autoscale_read_target}"
   autoscale_write_target       = "${var.autoscale_write_target}"
-  autoscale_min_read_capacity  = "${var.autoscale_min_read_capacity}"
   autoscale_max_read_capacity  = "${var.autoscale_max_read_capacity}"
+  autoscale_max_write_capacity = "${var.autoscale_max_write_capacity}"
+}
+
+# From https://github.com/gravitational/teleport/blob/b9813e3/examples/aws/terraform/dynamo.tf#L38-L91
+module "dynamodb_audit_table" {
+  source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.7.0"
+  namespace         = "${var.namespace}"
+  stage             = "${var.stage}"
+  name              = "${var.name}"
+  delimiter         = "${var.delimiter}"
+  attributes        = ["${compact(concat(var.attributes, list("events")))}"]
+  tags              = "${var.tags}"
+  enable_encryption = "true"
+  hash_key          = "SessionID"
+  hash_key_type     = "S"
+  range_key         = "EventIndex"
+  range_key_type    = "N"
+  ttl_attribute     = "Expires"
+
+  dynamodb_attributes = [
+    {
+      name = "SessionID"
+      type = "S"
+    },
+    {
+      name = "EventIndex"
+      type = "N"
+    },
+    {
+      name = "EventNamespace"
+      type = "S"
+    },
+    {
+      name = "CreatedAt"
+      type = "N"
+    },
+  ]
+
+  global_secondary_index_map = [{
+    name            = "timesearch"
+    hash_key        = "EventNamespace"
+    range_key       = "CreatedAt"
+    read_capacity   = "${var.autoscale_min_read_capacity}"
+    write_capacity  = "${var.autoscale_min_write_capacity}"
+    projection_type = "ALL"
+  }]
+
+  # min_read and min_write set the provisioned capacity even if the autoscaler is not enabled
+  autoscale_min_read_capacity  = "${var.autoscale_min_read_capacity}"
   autoscale_min_write_capacity = "${var.autoscale_min_write_capacity}"
+
+  enable_autoscaler            = "true"
+  autoscale_read_target        = "${var.autoscale_read_target}"
+  autoscale_write_target       = "${var.autoscale_write_target}"
+  autoscale_max_read_capacity  = "${var.autoscale_max_read_capacity}"
   autoscale_max_write_capacity = "${var.autoscale_max_write_capacity}"
 }
 
@@ -33,7 +95,10 @@ data "aws_iam_policy_document" "dynamodb" {
     effect  = "Allow"
     actions = ["dynamodb:*"]
 
-    resources = ["${module.dynamodb_table.table_arn}"]
+    resources = [
+      "${module.dynamodb_audit_table.table_arn}",
+      "${module.dynamodb_state_table.table_arn}",
+    ]
   }
 }
 

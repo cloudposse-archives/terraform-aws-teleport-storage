@@ -31,11 +31,6 @@ variable "tags" {
   description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
 }
 
-variable "region" {
-  type        = "string"
-  description = "AWS Region"
-}
-
 variable "prefix" {
   type        = "string"
   description = "S3 bucket prefix"
@@ -58,21 +53,6 @@ variable "expiration_days" {
   type        = "string"
   description = "Number of days after which to expunge the objects"
   default     = "90"
-}
-
-variable "hash_key" {
-  type    = "string"
-  default = "HashKey"
-}
-
-variable "range_key" {
-  type    = "string"
-  default = "FullPath"
-}
-
-variable "ttl_attribute" {
-  type    = "string"
-  default = "Expires"
 }
 
 variable "autoscale_write_target" {

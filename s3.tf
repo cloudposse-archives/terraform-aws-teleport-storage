@@ -4,7 +4,7 @@ module "s3_bucket" {
   stage                    = "${var.stage}"
   name                     = "${var.name}"
   delimiter                = "${var.delimiter}"
-  attributes               = ["${compact(concat(var.attributes, list("logs")))}"]
+  attributes               = ["${compact(concat(var.attributes, list("sessions")))}"]
   tags                     = "${var.tags}"
   prefix                   = "${var.prefix}"
   standard_transition_days = "${var.standard_transition_days}"
@@ -18,7 +18,7 @@ module "label_s3" {
   stage      = "${var.stage}"
   name       = "${var.name}"
   delimiter  = "${var.delimiter}"
-  attributes = ["${compact(concat(var.attributes, list("logs")))}"]
+  attributes = ["${compact(concat(var.attributes, list("sessions")))}"]
   tags       = "${var.tags}"
 }
 
