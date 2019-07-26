@@ -8,6 +8,8 @@ module "dynamodb_state_table" {
   attributes        = ["${compact(concat(var.attributes, list("cluster_state")))}"]
   tags              = "${var.tags}"
   enable_encryption = "true"
+  enable_streams    = "true"
+  stream_view_type  = "NEW_IMAGE"
   hash_key          = "HashKey"
   hash_key_type     = "S"
   range_key         = "FullPath"
