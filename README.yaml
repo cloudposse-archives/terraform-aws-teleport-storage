@@ -1,0 +1,74 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-aws-teleport-storage
+
+# Tags of this project
+tags:
+  - aws
+  - terraform
+  - terraform-modules
+  - kubernetes
+  - teleport
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: "APACHE2"
+
+# Canonical GitHub repo
+github_repo: cloudposse/terraform-aws-teleport-storage
+
+# Badges to display
+badges:
+  - name: "Codefresh Build Status"
+    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-teleport-storage?type=cf-1"
+    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5d04407b1fc622c0cf6d3df8"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-teleport-storage.svg"
+    url: "https://github.com/cloudposse/terraform-aws-teleport-storage/releases/latest"
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/badge.svg"
+    url: "https://slack.cloudposse.com"
+
+# Short description of this project
+description: |-
+  This Terraform module provisions:
+
+    * An S3 bucket for session logs in Gravitational [Teleport](https://gravitational.com/teleport)
+    * 2 DynamoDB tables to use as storage backend in Teleport
+
+  ## Features
+
+  Using DynamoDB as a storage backend allows highly available deployments of Teleport Auth services.
+
+  Using S3 for Teleport session storage has many advantages:
+
+  * Encryption at rest
+  * Versioned objects
+  * Lifecycle Support to expunge old sessions (e.g. after 2 years)
+  * Extreme Availability & Durability
+  * Zero Maintenance
+  * Glacier
+  * Cross Region Replication
+  * S3 Bucket could be owned by tamper-proof AWS Audit Account
+  * Easily prevent deletions
+  * Audit Trails, Access Logs via Cloud Trails
+
+include:
+  - "docs/targets.md"
+  - "docs/terraform.md"
+
+# Contributors to this project
+contributors:
+  - name: "Erik Osterman"
+    github: "osterman"
+  - name: "Andriy Knysh"
+    github: "aknysh"
+  - name: "Igor Rodionov"
+    github: "goruha"
