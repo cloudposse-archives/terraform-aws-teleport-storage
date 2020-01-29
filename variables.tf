@@ -57,26 +57,32 @@ variable "expiration_days" {
 
 variable "autoscale_write_target" {
   default = 50
+  description = "DynamoDB autoscale write target"
 }
 
 variable "autoscale_read_target" {
   default = 50
+  description = "DynamoDB autoscale read target"
 }
 
 variable "autoscale_min_read_capacity" {
   default = 10
+  description = "DynamoDB autoscale read min capacity"
 }
 
 variable "autoscale_max_read_capacity" {
   default = 100
+  description = "DynamoDB autoscale read max capacity"
 }
 
 variable "autoscale_min_write_capacity" {
   default = 10
+  description = "DynamoDB autoscale write min capacity"
 }
 
 variable "autoscale_max_write_capacity" {
   default = 100
+  description = "DynamoDB autoscale write max capacity"
 }
 
 variable "iam_role_max_session_duration" {
