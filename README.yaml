@@ -60,6 +60,20 @@ description: |-
   * Easily prevent deletions
   * Audit Trails, Access Logs via Cloud Trails
 
+usage: |-
+
+  ```hcl
+  module "teleport_storage" {
+    source = "cloudposse/teleport-storage/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version     = "x.x.x"
+
+    standard_transition_days = var.s3_standard_transition_days
+    glacier_transition_days  = var.s3_glacier_transition_days
+    expiration_days          = var.s3_expiration_days
+  }
+  ```
+
 include:
   - "docs/targets.md"
   - "docs/terraform.md"
@@ -72,3 +86,5 @@ contributors:
     github: "aknysh"
   - name: "Igor Rodionov"
     github: "goruha"
+  - name: "RB"
+    github: "nitrocode"
