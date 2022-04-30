@@ -5,10 +5,8 @@ locals {
 }
 
 module "s3_bucket" {
-  # source                   = "git::https://github.com/cloudposse/terraform-aws-s3-log-storage.git?ref=tags/0.1.3"
-
   source = "cloudposse/s3-log-storage/aws"
-  version = "0.26.0"
+  version = "0.28.0"
 
   attributes               = local.s3_attributes
   prefix                   = var.prefix
@@ -20,8 +18,6 @@ module "s3_bucket" {
 }
 
 module "label_s3" {
-  # source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.3"
-
   source  = "cloudposse/label/null"
   version = "0.25.0"
 
