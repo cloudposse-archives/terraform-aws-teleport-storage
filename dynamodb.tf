@@ -1,9 +1,7 @@
 # From https://github.com/gravitational/teleport/blob/b9813e3/examples/aws/terraform/dynamo.tf#L1-L36
 module "dynamodb_state_table" {
-  # source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.7.0"
-
   source  = "cloudposse/dynamodb/aws"
-  version = "0.29.4"
+  version = "0.29.5"
 
   attributes        = [compact(concat(var.attributes, list("cluster_state")))]
 
@@ -31,12 +29,10 @@ module "dynamodb_state_table" {
 
 # From https://github.com/gravitational/teleport/blob/b9813e3/examples/aws/terraform/dynamo.tf#L38-L91
 module "dynamodb_audit_table" {
-  # source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.7.0"
-
   source  = "cloudposse/dynamodb/aws"
-  version = "0.29.4"
+  version = "0.29.5"
 
-  attributes        = [compact(concat(var.attributes, list("events")))]
+  attributes = [compact(concat(var.attributes, list("events")))]
 
   enable_encryption = true
   hash_key          = "SessionID"
@@ -87,8 +83,6 @@ module "dynamodb_audit_table" {
 }
 
 module "label_dynamodb" {
-  # source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.3.3"
-
   source  = "cloudposse/label/null"
   version = "0.25.0"
 
