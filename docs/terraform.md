@@ -13,11 +13,11 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_dynamodb_audit_table"></a> [dynamodb\_audit\_table](#module\_dynamodb\_audit\_table) | cloudposse/dynamodb/aws | 0.29.4 |
-| <a name="module_dynamodb_state_table"></a> [dynamodb\_state\_table](#module\_dynamodb\_state\_table) | cloudposse/dynamodb/aws | 0.29.4 |
+| <a name="module_dynamodb_audit_table"></a> [dynamodb\_audit\_table](#module\_dynamodb\_audit\_table) | cloudposse/dynamodb/aws | 0.29.5 |
+| <a name="module_dynamodb_state_table"></a> [dynamodb\_state\_table](#module\_dynamodb\_state\_table) | cloudposse/dynamodb/aws | 0.29.5 |
 | <a name="module_label_dynamodb"></a> [label\_dynamodb](#module\_label\_dynamodb) | cloudposse/label/null | 0.25.0 |
 | <a name="module_label_s3"></a> [label\_s3](#module\_label\_s3) | cloudposse/label/null | 0.25.0 |
-| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | cloudposse/s3-log-storage/aws | 0.26.0 |
+| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | cloudposse/s3-log-storage/aws | 0.28.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
 ## Resources
