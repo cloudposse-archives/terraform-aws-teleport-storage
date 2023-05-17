@@ -1,56 +1,56 @@
 variable "namespace" {
   description = "Namespace (e.g. `cp` or `cloudposse`)"
-  type        = "string"
+  type        = string
 }
 
 variable "stage" {
   description = "Stage (e.g. `prod`, `dev`, `staging`)"
-  type        = "string"
+  type        = string
 }
 
 variable "name" {
   description = "Name  (e.g. `bastion` or `db`)"
-  type        = "string"
+  type        = string
 }
 
 variable "delimiter" {
-  type        = "string"
+  type        = string
   default     = "-"
   description = "Delimiter to be used between `name`, `namespace`, `stage`, etc."
 }
 
 variable "attributes" {
-  type        = "list"
+  type        = list(string)
   default     = []
   description = "Additional attributes (e.g. `policy` or `role`)"
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map(string)
   default     = {}
   description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
 }
 
 variable "prefix" {
-  type        = "string"
+  type        = string
   description = "S3 bucket prefix"
   default     = ""
 }
 
 variable "standard_transition_days" {
-  type        = "string"
+  type        = string
   description = "Number of days to persist in the standard storage tier before moving to the glacier tier"
   default     = "30"
 }
 
 variable "glacier_transition_days" {
-  type        = "string"
+  type        = string
   description = "Number of days after which to move the data to the glacier storage tier"
   default     = "60"
 }
 
 variable "expiration_days" {
-  type        = "string"
+  type        = string
   description = "Number of days after which to expunge the objects"
   default     = "90"
 }
