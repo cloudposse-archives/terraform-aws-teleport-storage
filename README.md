@@ -136,7 +136,7 @@ No requirements.
 | <a name="module_dynamodb_state_table"></a> [dynamodb\_state\_table](#module\_dynamodb\_state\_table) | git::https://github.com/cloudposse/terraform-aws-dynamodb.git | tags/0.7.0 |
 | <a name="module_label_dynamodb"></a> [label\_dynamodb](#module\_label\_dynamodb) | git::https://github.com/cloudposse/terraform-null-label.git | tags/0.3.3 |
 | <a name="module_label_s3"></a> [label\_s3](#module\_label\_s3) | git::https://github.com/cloudposse/terraform-null-label.git | tags/0.3.3 |
-| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | git::https://github.com/cloudposse/terraform-aws-s3-log-storage.git | tags/0.1.3 |
+| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | git::https://github.com/cloudposse/terraform-aws-s3-log-storage.git | 0.28.3 |
 
 ## Resources
 
