@@ -1,6 +1,6 @@
 # From https://github.com/gravitational/teleport/blob/b9813e3/examples/aws/terraform/dynamo.tf#L1-L36
 module "dynamodb_state_table" {
-  source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.7.0"
+  source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=0.34.0"
   namespace         = var.namespace
   stage             = var.stage
   name              = var.name
@@ -29,7 +29,7 @@ module "dynamodb_state_table" {
 
 # From https://github.com/gravitational/teleport/blob/b9813e3/examples/aws/terraform/dynamo.tf#L38-L91
 module "dynamodb_audit_table" {
-  source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=tags/0.7.0"
+  source            = "git::https://github.com/cloudposse/terraform-aws-dynamodb.git?ref=0.34.0"
   namespace         = var.namespace
   stage             = var.stage
   name              = var.name
