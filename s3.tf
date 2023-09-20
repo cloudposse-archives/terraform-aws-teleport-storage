@@ -1,5 +1,5 @@
 module "s3_bucket" {
-  source                   = "git::https://github.com/cloudposse/terraform-aws-s3-log-storage.git?ref=tags/0.1.3"
+  source                   = "git::https://github.com/cloudposse/terraform-aws-s3-log-storage.git?ref=0.28.3"
   namespace                = var.namespace
   stage                    = var.stage
   name                     = var.name
